@@ -14,7 +14,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <MenuSuperior />
-        <h4>Quality</h4>
+        <h4>Nuestra POLLA</h4>
       </main>
 
       <footer className={styles.footer}>
