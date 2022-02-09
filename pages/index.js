@@ -13,8 +13,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <MenuSuperior />
-        <h4>Nuestra POLLA</h4>
+        {/* <MenuSuperior /> */}
+        <h4>NP 2022</h4>
       </main>
 
       <footer className={styles.footer}>
@@ -32,3 +32,8 @@ export default function Home() {
     </div>
   );
 }
+
+/* 
+Integración Material UI Next.js
+https://dev.to/hajhosein/nextjs-mui-v5-tutorial-2k35
+*/
