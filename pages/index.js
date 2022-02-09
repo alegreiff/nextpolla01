@@ -1,9 +1,12 @@
+import { Button } from "@mui/material";
 import Head from "next/head";
 import Image from "next/image";
 import MenuSuperior from "../components/MenuSuperior";
 import styles from "../styles/Home.module.css";
+import { estadoHora } from "../zustand/horaPolla";
 
 export default function Home() {
+  const { hora, horaCatar, horaColombia } = estadoHora();
   return (
     <div className={styles.container}>
       <Head>
@@ -15,6 +18,9 @@ export default function Home() {
       <main className={styles.main}>
         {/* <MenuSuperior /> */}
         <h4>NP 2022</h4>
+        <h5>Catar</h5>
+        <Button variant="contained">Catar {hora}</Button>
+        <Button variant="contained">Colombia {hora}</Button>
       </main>
 
       <footer className={styles.footer}>
