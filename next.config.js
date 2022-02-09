@@ -1,4 +1,9 @@
-const securityHeaders = [];
+const securityHeaders = [
+  {
+    key: "X-Frame-Options",
+    value: "SAMEORIGIN",
+  },
+];
 
 module.exports = {
   reactStrictMode: true,
