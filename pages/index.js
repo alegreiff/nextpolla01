@@ -1,29 +1,13 @@
-import { Button } from "@mui/material";
 import styles from "../styles/Home.module.css";
-import { estadoHora } from "../zustand/horaPolla";
+
+import logoQ from "../public/qatar.png";
+import Image from "next/image";
 
 export default function Home() {
-  const { hora, horaCatar, horaColombia, pais } = estadoHora();
-  const handleButtonCatar = () => {
-    horaCatar();
-  };
-  const handleButtonColombia = () => {
-    horaColombia();
-  };
   return (
     <div className={styles.container}>
       <main>
-        <h4>NP 2022</h4>
-        <h5>{pais}</h5>
-        {hora > 0 ? (
-          <Button variant="contained" onClick={handleButtonCatar}>
-            Catar {hora}
-          </Button>
-        ) : (
-          <Button variant="contained" onClick={handleButtonColombia}>
-            Colombia {hora}
-          </Button>
-        )}
+        <Image src={logoQ} alt="Logo" />
       </main>
     </div>
   );

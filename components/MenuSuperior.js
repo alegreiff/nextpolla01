@@ -14,6 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { menu } from "../data/web/menu";
 import Link from "next/link";
 import { NaviLink } from "./utils/NaviLink";
+import ball from "../public/ball.png";
+import Image from "next/image";
 //import "./estilos.css";
 
 const pages = ["Products", "Pricing", "Blog"];
@@ -48,7 +50,7 @@ const MenuSuperior = () => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            LOGO
+            NP
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -106,10 +108,11 @@ const MenuSuperior = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                
+                NP
               </IconButton>
             </Tooltip>
             <Menu
@@ -134,7 +137,7 @@ const MenuSuperior = () => {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Container>
     </AppBar>

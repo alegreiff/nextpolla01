@@ -6,8 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
 import moment from "moment";
+
 import { useEffect, useState } from "react";
 export default function TablaBase({ hora, pais, datos }) {
   const [partidos, setPartidos] = useState([]);
@@ -23,8 +23,7 @@ export default function TablaBase({ hora, pais, datos }) {
           <TableRow>
             <TableCell align="right">#</TableCell>
             <TableCell>Partido</TableCell>
-            <TableCell align="right">Fase</TableCell>
-            <TableCell align="right">Fecha</TableCell>
+
             <TableCell align="right">{pais}</TableCell>
           </TableRow>
         </TableHead>
@@ -38,8 +37,6 @@ export default function TablaBase({ hora, pais, datos }) {
               <TableCell component="th" scope="row">
                 {row.team1} vs {row.team2}
               </TableCell>
-              <TableCell align="right">{row.fase}</TableCell>
-              <TableCell align="right">{row.fecha}</TableCell>
 
               <TableCell align="right">
                 {moment(row.fecha, "DD-MM-YYYY")
