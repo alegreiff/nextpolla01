@@ -1,11 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { CacheProvider } from '@emotion/react';
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import React from "react";
+import PropTypes from "prop-types";
+import { CacheProvider } from "@emotion/react";
+import { ThemeProvider, CssBaseline } from "@mui/material";
 
-import createEmotionCache from '../utility/createEmotionCache';
-import lightTheme from '../styles/theme/lightTheme';
-import '../styles/globals.css';
+import createEmotionCache from "../utility/createEmotionCache";
+import lightTheme from "../styles/theme/lightTheme";
+import "../styles/globals.css";
+import "../styles/estilos.css";
+import { MainLayout } from "../components/layouts/MainLayout";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -16,7 +18,9 @@ const MyApp = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <MainLayout>
+          <Component {...pageProps} />
+        </MainLayout>
       </ThemeProvider>
     </CacheProvider>
   );

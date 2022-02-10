@@ -1,5 +1,5 @@
-import { partidos } from "../../../data/schedule";
-import { estadios } from "../../../data/cities";
+import { partidos } from "../../../data/api/schedule";
+import { estadios } from "../../../data/api/cities";
 
 export default function handler(req, res) {
   const { id } = req.query;

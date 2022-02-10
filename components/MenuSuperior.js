@@ -11,6 +11,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import { menu } from "../data/web/menu";
+import Link from "next/link";
+import { NaviLink } from "./utils/NaviLink";
+//import "./estilos.css";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -92,14 +96,13 @@ const MenuSuperior = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
+            {menu.map((page) => (
+              <NaviLink
+                key={page.id}
+                enlace={page.enlace}
+                nombre={page.titulo}
+                handleCloseNavMenu={handleCloseNavMenu}
+              ></NaviLink>
             ))}
           </Box>
 

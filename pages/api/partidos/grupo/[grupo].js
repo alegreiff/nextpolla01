@@ -1,5 +1,5 @@
-import { partidos } from "../../../../data/schedule";
-import { errores } from "../../../../data/errores";
+import { partidos } from "../../../../data/api/schedule";
+import { errores } from "../../../../data/api/errores";
 
 export default function handler(req, res) {
   const { grupo } = req.query;
