@@ -4,7 +4,6 @@ import { signIn, signOut } from "next-auth/react";
 import logoQ from "../public/qatar.png";
 import Image from "next/image";
 import { Button } from "@mui/material";
-import { ClosedCaptionDisabledOutlined } from "@mui/icons-material";
 
 export default function Home() {
   const addData = async () => {
