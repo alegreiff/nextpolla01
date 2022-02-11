@@ -9,9 +9,9 @@ import {
 import { connectToDatabase } from "../../../lib/db";
 console.log("D", process.env.GOOGLE_CLIENT_ID);
 export default NextAuth({
-  session: {
+  /* session: {
     jwt: true,
-  },
+  }, */
   providers: [
     GoogleProvider({
       clientId: GOOGLE_CLIENT_ID,
