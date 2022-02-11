@@ -15,7 +15,8 @@ export const MainLayout = ({ children }) => {
       <MenuSuperior />
       {children}
       <footer className={styles.footer}>
-        Nuestra POLLA 2022
+        NP 2022
+        {/* Nuestra POLLA 2022 */}
         {/* <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"

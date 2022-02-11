@@ -8,6 +8,7 @@ import lightTheme from "../styles/theme/lightTheme";
 import "../styles/globals.css";
 import "../styles/estilos.css";
 import { MainLayout } from "../components/layouts/MainLayout";
+import { SessionProvider } from "next-auth/react";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -17,12 +18,14 @@ const MyApp = (props) => {
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        <Container>
-          <MainLayout>
-            <Component {...pageProps} />
-          </MainLayout>
-        </Container>
+        <SessionProvider>
+          <CssBaseline />
+          <Container>
+            <MainLayout>
+              <Component {...pageProps} />
+            </MainLayout>
+          </Container>
+        </SessionProvider>
       </ThemeProvider>
     </CacheProvider>
   );
