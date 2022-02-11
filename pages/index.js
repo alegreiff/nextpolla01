@@ -17,7 +17,7 @@ export default function Home() {
       method: "POST",
       body: JSON.stringify(datas),
       headers: {
-        //"Content-Type": "application/json",
+        "Content-Type": "application/json",
       },
     });
 
@@ -32,7 +32,7 @@ export default function Home() {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: {
-        //"Content-Type": "application/json",
+        "Content-Type": "application/json",
       },
     });
     const data = await response.json();

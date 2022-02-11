@@ -16,18 +16,18 @@ const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
-        <SessionProvider>
+    <SessionProvider>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
           <CssBaseline />
           <Container>
             <MainLayout>
               <Component {...pageProps} />
             </MainLayout>
           </Container>
-        </SessionProvider>
-      </ThemeProvider>
-    </CacheProvider>
+        </ThemeProvider>
+      </CacheProvider>
+    </SessionProvider>
   );
 };
 
