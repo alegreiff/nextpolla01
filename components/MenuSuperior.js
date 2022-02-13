@@ -10,11 +10,12 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { menu } from "../data/web/menu";
+
 import Link from "next/link";
 import { NaviLink } from "./utils/NaviLink";
 import ball from "../public/ball.png";
 import Image from "next/image";
+import { menu } from "../data/web/menu";
 //import "./estilos.css";
 
 import { useSession, getSession } from "next-auth/react";
@@ -24,6 +25,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const MenuSuperior = () => {
   const { data: loading } = useSession();
+  //console.log("LOADING", loading);
 
   const [isLoading, setIsLoading] = useState(true);
   const [loadesSession, setLoadesSession] = useState();

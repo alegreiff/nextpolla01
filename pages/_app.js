@@ -20,7 +20,7 @@ const MyApp = (props) => {
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={lightTheme}>
           <CssBaseline />
-          <Container>
+          <Container maxWidth="lg">
             <MainLayout>
               <Component {...pageProps} />
             </MainLayout>

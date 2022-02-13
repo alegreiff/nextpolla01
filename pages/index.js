@@ -3,9 +3,13 @@ import styles from "../styles/Home.module.css";
 import { signIn, signOut } from "next-auth/react";
 import logoQ from "../public/qatar.png";
 import Image from "next/image";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { useSession, getSession } from "next-auth/react";
 
 export default function Home() {
+  const { data: loading } = useSession();
+  console.log("INIT LOADING", loading);
+
   const addData = async () => {
     const datas = {
       nombre: "Jaime",
@@ -44,10 +48,10 @@ export default function Home() {
   const loggIn = async () => {
     const result = await signIn("credentials", {
       redirect: false,
-      email: "alegreiff@gmail.com",
-      password: "jaime123",
+      email: "test@test1.es",
+      password: "12345678",
     });
-    console.log(result);
+    console.log("HOME RES", result);
   };
   const logOUT = () => {
     signOut({ redirect: false });
@@ -56,7 +60,14 @@ export default function Home() {
     const result = await signIn("google", {
       redirect: false,
     });
-    console.log(result);
+    console.log("GOOGLE", result);
+  };
+
+  const logTuira = async () => {
+    const result = await signIn("twitter", {
+      redirect: false,
+    });
+    console.log("Twitter", result);
   };
 
   return (
@@ -67,6 +78,10 @@ export default function Home() {
       <Button onClick={loggIn}>Login</Button>
       <Button onClick={logOUT}>Logout</Button>
       <Button onClick={logGugol}>Googol</Button>
+      <Button onClick={logTuira}>Tuira</Button>
+      <Box>
+        <pre>{JSON.stringify(loading, null, 2)}</pre>
+      </Box>
     </div>
   );
 }
