@@ -12,7 +12,8 @@ export const menu = [
     titulo: "Calendario",
     enlace: "/calendario",
     tipo: "content",
-    auth: true,
+    auth: false,
+    visible: true,
   },
   {
     id: 102,
