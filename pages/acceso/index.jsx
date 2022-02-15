@@ -1,12 +1,13 @@
 import { Box, Button, Grid, TextField } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PollaButton } from "../../components/formularios/controles/PollaButton";
 import { PollaFormulario } from "../../components/formularios/controles/PollaFormulario";
 import { PollaInput } from "../../components/formularios/controles/PollaInput";
 import classes from "../../styles/errores.module.css";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const validationSchema = yup.object({
   campoCorreo: yup
@@ -17,6 +18,19 @@ const validationSchema = yup.object({
 });
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+  console.log("auth", isLoading);
+  useEffect(() => {
+    getSession().then((session) => {
+      if (session) {
+        router.replace("/");
+      } else {
+        setIsLoading(false);
+      }
+    });
+  }, [router]);
+
   const formik = useFormik({
     initialValues: {
       campoCorreo: "",
@@ -61,6 +75,10 @@ export default function LoginPage() {
 
     return data;
   };
+
+  if (isLoading) {
+    return <p>Cargando...</p>;
+  }
 
   return (
     <>

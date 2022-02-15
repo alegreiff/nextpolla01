@@ -90,3 +90,19 @@ export default function Home() {
 Integración Material UI Next.js
 https://dev.to/hajhosein/nextjs-mui-v5-tutorial-2k35
 */
+
+export async function getServerSideProps(context) {
+  const session = await getSession({ req: context.req });
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/equipos",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+}

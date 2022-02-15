@@ -6,35 +6,28 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import Link from "next/link";
 import { NaviLink } from "./utils/NaviLink";
-import ball from "../public/ball.png";
-import Image from "next/image";
 import { menu } from "../data/web/menu";
-//import "./estilos.css";
-
 import { useSession, getSession } from "next-auth/react";
 import { useState, React, useEffect } from "react";
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const MenuSuperior = () => {
-  const { data: loading } = useSession();
-  //console.log("LOADING", loading);
+  const { data: session, status } = useSession();
+  const [datosMenu, setDatosMenu] = useState([]);
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadesSession, setLoadesSession] = useState();
   useEffect(() => {
-    getSession().then((dato) => {
-      setLoadesSession(dato);
-      setIsLoading(false);
-    });
-  }, []);
+    if (status === "authenticated") {
+      const elementosMenu = menu.filter((elem) => elem.auth || elem.visible);
+      setDatosMenu(elementosMenu);
+    } else {
+      const elementosMenu = menu.filter((elem) => !elem.auth || elem.visible);
+      setDatosMenu(elementosMenu);
+    }
+  }, [status]);
 
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -53,14 +46,6 @@ const MenuSuperior = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  if (isLoading) {
-    return (
-      <>
-        <h2>Caqrgando</h2>
-      </>
-    );
-  }
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -119,7 +104,7 @@ const MenuSuperior = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {menu.map((page) => (
+            {datosMenu.map((page) => (
               <NaviLink
                 key={page.id}
                 enlace={page.enlace}

@@ -1,0 +1,8 @@
+.bordered {
+  border: 1px grey solid;
+  padding: 0.5em;
+  border-radius: 11px;
+}
+.chip {
+  margin: 4px 0;
+}
