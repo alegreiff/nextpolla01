@@ -15,12 +15,19 @@ import { Alert, Box, Button, Chip } from "@mui/material";
 import EuroPath from "../../public/europath.jpeg";
 import Image from "next/image";
 import estilos from "./equipos.module.css";
+import { BotonEquipoClasificado } from "../../components/elementos/BotonEquipoClasificado";
 
 export default function PageEquipos() {
   const [teamsQualif, setTeamsQualif] = useState([]);
   const [repescaA, setRepescaA] = useState([]);
   const [repescaB, setRepescaB] = useState([]);
   const [paisesAfrica, setPaisesAfrica] = useState([]);
+
+  /* useEffect(() => {
+    const partial = teamsQualif;
+    partial.sort((a, b) => (a.pais > b.pais ? 1 : -1));
+    setTeamsQualif(partial);
+  }, [teamsQualif]); */
 
   useEffect(() => {
     const tempora = clasificados.filter((equipo) => equipo.pais != "");
@@ -86,14 +93,16 @@ export default function PageEquipos() {
       let pais = myRand(arreglo, frecuencia);
       cupos.push({ id: 100, oficial: false, confederacion: "ÁFRICA", pais });
     });
-    console.log(cupos);
+    //console.log(cupos);
     cupos.forEach((item) => {
       setTeamsQualif((estado) => [...estado, item]);
     });
   };
 
   const aleatoriosAsia = () => {
-    const resetAsia = teamsQualif.filter((item) => item.id != 77);
+    const resetAsia = teamsQualif.filter(
+      (item) => item.id != 77 && item.id != 98
+    );
     setTeamsQualif(resetAsia);
     const resetRepescaA = repescaA.filter(
       (item) => item.confederacion != "ASIA"
@@ -145,6 +154,8 @@ export default function PageEquipos() {
   };
 
   const aleatoriosOceania = () => {
+    const resetRepescaBX = teamsQualif.filter((item) => item.id != 99);
+    setTeamsQualif(resetRepescaBX);
     const resetRepescaB = repescaB.filter(
       (item) => item.confederacion != "OCEANÍA"
     );
@@ -168,7 +179,9 @@ export default function PageEquipos() {
   };
 
   const aleatoriosConcacaf = () => {
-    const resetConcacaf = teamsQualif.filter((item) => item.id != 54);
+    const resetConcacaf = teamsQualif.filter(
+      (item) => item.id != 54 && item.id != 99
+    );
     setTeamsQualif(resetConcacaf);
     const resetRepescaB = repescaB.filter(
       (item) => item.confederacion != "CONCACAF"
@@ -209,7 +222,9 @@ export default function PageEquipos() {
   };
 
   const defineConmebol = () => {
-    const resetConmebol = teamsQualif.filter((item) => item.id != 55);
+    const resetConmebol = teamsQualif.filter(
+      (item) => item.id != 55 && item.id != 98
+    );
     setTeamsQualif(resetConmebol);
     const resetRepescaA = repescaA.filter(
       (item) => item.confederacion != "CONMEBOL"
@@ -256,7 +271,7 @@ export default function PageEquipos() {
     let nuevo = {
       id: 98,
       oficial: false,
-      confederacion: "REPESCA A",
+      confederacion: repescaA.find((p) => p.pais === pais).confederacion + " *",
       pais,
     };
     setTeamsQualif((estado) => [...estado, nuevo]);
@@ -267,15 +282,18 @@ export default function PageEquipos() {
     setTeamsQualif(resetResultadoRepescaB);
     let arreglo = [];
     let frecuencia = [];
+
     repescaB.forEach((item) => {
       arreglo.push(item.pais);
       frecuencia.push(item.opcion);
     });
+
     let pais = myRand(arreglo, frecuencia);
+
     let nuevo = {
       id: 99,
       oficial: false,
-      confederacion: "REPESCA B",
+      confederacion: repescaB.find((p) => p.pais === pais).confederacion + " *",
       pais,
     };
     setTeamsQualif((estado) => [...estado, nuevo]);
@@ -301,17 +319,20 @@ export default function PageEquipos() {
   return (
     <>
       <Grid container spacing={3} mt={5}>
-        <Grid item xs={8}>
+        <Grid item xs={12} md={8}>
+          <span className={estilos.total}>{teamsQualif.length}</span>
           <Grid container spacing={2}>
             {teamsQualif.map((eq, i) => (
               <Grid key={i} item xs={6} md={3}>
-                <Button
+                <BotonEquipoClasificado equipo={eq} />
+
+                {/* <Button
                   color={!eq.oficial ? "warning" : "info"}
                   variant="outlined"
                   sx={{ width: "100%" }}
                 >
                   {eq.pais}
-                </Button>
+                </Button> */}
               </Grid>
             ))}
           </Grid>
