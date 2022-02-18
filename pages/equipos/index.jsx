@@ -18,6 +18,7 @@ import estilos from "./equipos.module.css";
 import { BotonEquipoClasificado } from "../../components/elementos/BotonEquipoClasificado";
 
 export default function PageEquipos() {
+  const [ceros, setCeros] = useState(false);
   const [uefaLeyenda, setUefaLeyenda] = useState("Definir Europa");
   const [conmebolLeyenda, setConmebolLeyenda] = useState("Definir Conmebol");
   const [asiaLeyenda, setAsiaLeyenda] = useState("Definir Asia");
@@ -38,18 +39,22 @@ export default function PageEquipos() {
   const [repescaB, setRepescaB] = useState([]);
   const [paisesAfrica, setPaisesAfrica] = useState([]);
 
-  /* useEffect(() => {
-    const partial = teamsQualif;
-    partial.sort((a, b) => (a.pais > b.pais ? 1 : -1));
-    setTeamsQualif(partial);
-  }, [teamsQualif]); */
-
   useEffect(() => {
     const tempora = clasificados.filter((equipo) => equipo.pais != "");
     setTeamsQualif(tempora);
     setRepescaA([]);
     setRepescaB([]);
   }, []);
+
+  useEffect(() => {
+    if (ceros) {
+      const tempora = clasificados.filter((equipo) => equipo.pais != "");
+      setTeamsQualif(tempora);
+      setRepescaA([]);
+      setRepescaB([]);
+    }
+    setCeros(false);
+  }, [ceros]);
 
   useEffect(() => {
     let tempoAfrica = [];
@@ -85,14 +90,6 @@ export default function PageEquipos() {
   };
 
   const clasifAfrica = () => {
-    /* const resetAfrica = teamsQualif.filter((item) => item.id != 100);
-    setTeamsQualif(resetAfrica);
-    const ordenado = africa.sort(() => 0.5 - Math.random());
-    for (var i = 0; i < 5; i++) {
-      let pais = ordenado[i];
-      let nuevo = { id: 100, oficial: false, confederacion: "ÁFRICA", pais };
-      setTeamsQualif((estado) => [...estado, nuevo]);
-    } */
     const resetAfrica = teamsQualif.filter((item) => item.id != 100);
     setTeamsQualif(resetAfrica);
     let cupos = [];
@@ -104,12 +101,11 @@ export default function PageEquipos() {
         arreglo.push(pais.pais);
         frecuencia.push(pais.opcion);
       });
-      //console.log(arreglo);
-      //console.log(frecuencia);
+
       let pais = myRand(arreglo, frecuencia);
       cupos.push({ id: 100, oficial: false, confederacion: "ÁFRICA", pais });
     });
-    //console.log(cupos);
+
     cupos.forEach((item) => {
       setTeamsQualif((estado) => [...estado, item]);
     });
@@ -344,10 +340,17 @@ export default function PageEquipos() {
     console.log("Dos");
   };
 
+  const reinicio = () => {
+    setCeros(true);
+  };
   return (
     <>
       <Grid container spacing={3} mt={5}>
         <Grid item>
+          <Box textAlign="center">
+            <Button onClick={reinicio}>Reiniciar {ceros}</Button>
+          </Box>
+
           <Box textAlign="center">
             <Button onClick={clasifUefa}>{uefaLeyenda} (+ 3)</Button>
           </Box>
