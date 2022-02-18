@@ -18,6 +18,7 @@ import estilos from "./equipos.module.css";
 import { BotonEquipoClasificado } from "../../components/elementos/BotonEquipoClasificado";
 
 export default function PageEquipos() {
+  const [uefaLeyenda, setUefaLeyenda] = useState("Definir Europa");
   const [teamsQualif, setTeamsQualif] = useState([]);
   const [repescaA, setRepescaA] = useState([]);
   const [repescaB, setRepescaB] = useState([]);
@@ -66,6 +67,7 @@ export default function PageEquipos() {
       let nuevo = { id: 50, oficial: false, confederacion: "UEFA", pais };
       setTeamsQualif((estado) => [...estado, nuevo]);
     });
+    setUefaLeyenda = "Volver a barajar Europa";
   };
 
   const clasifAfrica = () => {
@@ -319,6 +321,79 @@ export default function PageEquipos() {
   return (
     <>
       <Grid container spacing={3} mt={5}>
+        <Grid item>
+          <Box textAlign="center">
+            <Button onClick={clasifUefa}>{uefaLeyenda} (+ 3)</Button>
+          </Box>
+
+          <Box textAlign="center">
+            <Button onClick={clasifAfrica}>
+              Definir clasificación África (+ 5)
+            </Button>
+          </Box>
+
+          <Box textAlign="center">
+            <Button onClick={defineConmebol}>
+              Definir clasificación Conmebol (+ 2.5)
+            </Button>
+          </Box>
+
+          <Box textAlign="center">
+            <Button onClick={aleatoriosConcacaf}>
+              Definir clasificación Concacaf (+ 3.5)
+            </Button>
+          </Box>
+          <Box textAlign="center">
+            <Button onClick={aleatoriosAsia}>
+              Definir clasificación Asia (+ 2.5)
+            </Button>
+          </Box>
+
+          <Box textAlign="center">
+            <Button onClick={aleatoriosOceania}>
+              Definir cupo a repechaje Oceanía (+ 0.5)
+            </Button>
+          </Box>
+
+          <Box border={1} mt={2} sx={{ padding: 1 }}>
+            <p>Conmebol - Asia</p>
+            {repescaA.map((item, i) => (
+              <Chip
+                key={i}
+                className={estilos.chip}
+                label={item.pais}
+                variant="outlined"
+              />
+            ))}
+            {repescaA.length === 2 && (
+              <Box textAlign="center">
+                <Button onClick={defineRepescaA}>
+                  Definir repesca Suramérica - Asia
+                </Button>
+              </Box>
+            )}
+          </Box>
+
+          <Box border={1} mt={2} sx={{ padding: 1 }}>
+            <p>Concacaf - Oceanía</p>
+
+            {repescaB.map((item, i) => (
+              <Chip
+                key={i}
+                className={estilos.chip}
+                label={item.pais}
+                variant="outlined"
+              />
+            ))}
+            {repescaB.length === 2 && (
+              <Box textAlign="center">
+                <Button onClick={defineRepescaB}>
+                  Definir repesca Concacaf - Oceanía
+                </Button>
+              </Box>
+            )}
+          </Box>
+        </Grid>
         <Grid item xs={12} md={8}>
           <span className={estilos.total}>{teamsQualif.length}</span>
           <Grid container spacing={2}>
@@ -465,81 +540,6 @@ export default function PageEquipos() {
               ))}
             </Grid>
           </Grid>
-        </Grid>
-
-        <Grid item>
-          <Box textAlign="center">
-            <Button onClick={clasifUefa}>Definir Repechaje Europa (+ 3)</Button>
-          </Box>
-
-          <Box textAlign="center">
-            <Button onClick={clasifAfrica}>
-              Definir clasificación África (+ 5)
-            </Button>
-          </Box>
-
-          <Box textAlign="center">
-            <Button onClick={defineConmebol}>
-              Definir clasificación Conmebol (+ 2.5)
-            </Button>
-          </Box>
-
-          <Box textAlign="center">
-            <Button onClick={aleatoriosConcacaf}>
-              Definir clasificación Concacaf (+ 3.5)
-            </Button>
-          </Box>
-
-          <Box textAlign="center">
-            <Button onClick={aleatoriosOceania}>
-              Definir cupo a repechaje Oceanía (+ 0.5)
-            </Button>
-          </Box>
-
-          <Box textAlign="center">
-            <Button onClick={aleatoriosAsia}>
-              Definir clasificación Asia (+ 2.5)
-            </Button>
-          </Box>
-
-          <Box border={3}>
-            <p>Conmebol - Asia</p>
-            {repescaA.map((item, i) => (
-              <Chip
-                key={i}
-                className={estilos.chip}
-                label={item.pais}
-                variant="outlined"
-              />
-            ))}
-            {repescaA.length === 2 && (
-              <Box textAlign="center">
-                <Button onClick={defineRepescaA}>
-                  Definir repesca Suramérica - Asia
-                </Button>
-              </Box>
-            )}
-          </Box>
-
-          <Box border={3}>
-            <p>Concacaf - Oceanía</p>
-
-            {repescaB.map((item, i) => (
-              <Chip
-                key={i}
-                className={estilos.chip}
-                label={item.pais}
-                variant="outlined"
-              />
-            ))}
-            {repescaB.length === 2 && (
-              <Box textAlign="center">
-                <Button onClick={defineRepescaB}>
-                  Definir repesca Concacaf - Oceanía
-                </Button>
-              </Box>
-            )}
-          </Box>
         </Grid>
       </Grid>
     </>
