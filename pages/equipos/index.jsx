@@ -19,6 +19,20 @@ import { BotonEquipoClasificado } from "../../components/elementos/BotonEquipoCl
 
 export default function PageEquipos() {
   const [uefaLeyenda, setUefaLeyenda] = useState("Definir Europa");
+  const [conmebolLeyenda, setConmebolLeyenda] = useState("Definir Conmebol");
+  const [asiaLeyenda, setAsiaLeyenda] = useState("Definir Asia");
+  const [concacafLeyenda, setConcacafLeyenda] = useState("Definir Concacaf");
+  const [africaLeyenda, setAfricaLeyenda] = useState("Definir África");
+  const [oceaniaLeyenda, setOceaniaLeyenda] = useState(
+    "Definir cupo a repechaje Oceanía"
+  );
+  const [conmebolAsiaLeyenda, setConmebolAsiaLeyenda] = useState(
+    "Definir repesca Conmebol - Asia"
+  );
+  const [concacafOceaniaLeyenda, setConcacafOceaniaLeyenda] = useState(
+    "Definir repesca Concacaf - Oceanía"
+  );
+
   const [teamsQualif, setTeamsQualif] = useState([]);
   const [repescaA, setRepescaA] = useState([]);
   const [repescaB, setRepescaB] = useState([]);
@@ -67,7 +81,7 @@ export default function PageEquipos() {
       let nuevo = { id: 50, oficial: false, confederacion: "UEFA", pais };
       setTeamsQualif((estado) => [...estado, nuevo]);
     });
-    setUefaLeyenda = "Volver a barajar Europa";
+    setUefaLeyenda("Volver a barajar Europa");
   };
 
   const clasifAfrica = () => {
@@ -99,12 +113,14 @@ export default function PageEquipos() {
     cupos.forEach((item) => {
       setTeamsQualif((estado) => [...estado, item]);
     });
+    setAfricaLeyenda("Volver a barajar África");
   };
 
   const aleatoriosAsia = () => {
     const resetAsia = teamsQualif.filter(
       (item) => item.id != 77 && item.id != 98
     );
+    setConmebolAsiaLeyenda("Definir repesca Conmebol - Asia");
     setTeamsQualif(resetAsia);
     const resetRepescaA = repescaA.filter(
       (item) => item.confederacion != "ASIA"
@@ -153,6 +169,7 @@ export default function PageEquipos() {
       opcion: 20,
     };
     setRepescaA((estado) => [...estado, nuevoRepesca]);
+    setAsiaLeyenda("Volver a barajar Asia");
   };
 
   const aleatoriosOceania = () => {
@@ -161,6 +178,8 @@ export default function PageEquipos() {
     const resetRepescaB = repescaB.filter(
       (item) => item.confederacion != "OCEANÍA"
     );
+    setConcacafOceaniaLeyenda("Definir repesca Concacaf - Oceanía");
+
     setRepescaB(resetRepescaB);
     let arreglo = [];
     let frecuencia = [];
@@ -178,12 +197,14 @@ export default function PageEquipos() {
       opcion: 35,
     };
     setRepescaB((estado) => [...estado, nuevo]);
+    setOceaniaLeyenda("Volver a barajar Oceanía");
   };
 
   const aleatoriosConcacaf = () => {
     const resetConcacaf = teamsQualif.filter(
       (item) => item.id != 54 && item.id != 99
     );
+    setConcacafOceaniaLeyenda("Definir repesca Concacaf - Oceanía");
     setTeamsQualif(resetConcacaf);
     const resetRepescaB = repescaB.filter(
       (item) => item.confederacion != "CONCACAF"
@@ -221,12 +242,14 @@ export default function PageEquipos() {
     cupos.forEach((item) => {
       setTeamsQualif((estado) => [...estado, item]);
     });
+    setConcacafLeyenda("Volver a barajar Concacaf");
   };
 
   const defineConmebol = () => {
     const resetConmebol = teamsQualif.filter(
       (item) => item.id != 55 && item.id != 98
     );
+    setConmebolAsiaLeyenda("Definir repesca Conmebol - Asia");
     setTeamsQualif(resetConmebol);
     const resetRepescaA = repescaA.filter(
       (item) => item.confederacion != "CONMEBOL"
@@ -258,6 +281,7 @@ export default function PageEquipos() {
     cupos.forEach((item) => {
       setTeamsQualif((estado) => [...estado, item]);
     });
+    setConmebolLeyenda("Volver a barajar Conmebol");
   };
 
   const defineRepescaA = () => {
@@ -277,6 +301,7 @@ export default function PageEquipos() {
       pais,
     };
     setTeamsQualif((estado) => [...estado, nuevo]);
+    setConmebolAsiaLeyenda("Volver a barajar esta repesca");
   };
 
   const defineRepescaB = () => {
@@ -299,6 +324,7 @@ export default function PageEquipos() {
       pais,
     };
     setTeamsQualif((estado) => [...estado, nuevo]);
+    setConcacafOceaniaLeyenda("Volver a barajar esta repesca");
   };
 
   const dameClasificados = () => {
@@ -327,31 +353,25 @@ export default function PageEquipos() {
           </Box>
 
           <Box textAlign="center">
-            <Button onClick={clasifAfrica}>
-              Definir clasificación África (+ 5)
-            </Button>
+            <Button onClick={clasifAfrica}>{africaLeyenda} (+ 5)</Button>
           </Box>
 
           <Box textAlign="center">
-            <Button onClick={defineConmebol}>
-              Definir clasificación Conmebol (+ 2.5)
-            </Button>
+            <Button onClick={defineConmebol}>{conmebolLeyenda} (+ 2.5)</Button>
           </Box>
 
           <Box textAlign="center">
             <Button onClick={aleatoriosConcacaf}>
-              Definir clasificación Concacaf (+ 3.5)
+              {concacafLeyenda} (+ 3.5)
             </Button>
           </Box>
           <Box textAlign="center">
-            <Button onClick={aleatoriosAsia}>
-              Definir clasificación Asia (+ 2.5)
-            </Button>
+            <Button onClick={aleatoriosAsia}>{asiaLeyenda} (+ 2.5)</Button>
           </Box>
 
           <Box textAlign="center">
             <Button onClick={aleatoriosOceania}>
-              Definir cupo a repechaje Oceanía (+ 0.5)
+              {oceaniaLeyenda} (+ 0.5)
             </Button>
           </Box>
 
@@ -367,9 +387,7 @@ export default function PageEquipos() {
             ))}
             {repescaA.length === 2 && (
               <Box textAlign="center">
-                <Button onClick={defineRepescaA}>
-                  Definir repesca Suramérica - Asia
-                </Button>
+                <Button onClick={defineRepescaA}>{conmebolAsiaLeyenda}</Button>
               </Box>
             )}
           </Box>
@@ -388,7 +406,7 @@ export default function PageEquipos() {
             {repescaB.length === 2 && (
               <Box textAlign="center">
                 <Button onClick={defineRepescaB}>
-                  Definir repesca Concacaf - Oceanía
+                  {concacafOceaniaLeyenda}
                 </Button>
               </Box>
             )}
