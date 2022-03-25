@@ -125,9 +125,10 @@ export default function PageEquipos() {
     let arreglo = [];
     let frecuencia = [];
 
-    let asiaGrupoA = [asia[0], asia[1], asia[2]];
+    //let asiaGrupoA = [asia[0], asia[1], asia[2]];
+    let asiaGrupoA = [asia[0]];
 
-    let asiaGrupoB = [asia[3], asia[4], asia[5]];
+    let asiaGrupoB = [asia[1], asia[2], asia[3]];
 
     asiaGrupoA.forEach((item) => {
       arreglo.push(item.pais);
@@ -136,11 +137,11 @@ export default function PageEquipos() {
 
     let cupos = [];
     let pais = myRand(arreglo, frecuencia);
-    cupos.push({ id: 77, oficial: false, confederacion: "ASIA", pais });
+    /* cupos.push({ id: 77, oficial: false, confederacion: "ASIA", pais });
     arreglo = arreglo.filter((eq) => eq != pais);
     pais = myRand(arreglo, frecuencia);
-    cupos.push({ id: 77, oficial: false, confederacion: "ASIA", pais });
-    arreglo = arreglo.filter((eq) => eq != pais);
+    cupos.push({ id: 77, oficial: false, confederacion: "ASIA", pais });*/
+    //arreglo = arreglo.filter((eq) => eq != pais);
 
     cupos.forEach((item) => {
       setTeamsQualif((estado) => [...estado, item]);
@@ -155,8 +156,9 @@ export default function PageEquipos() {
       arregloB.push(item.pais);
       frecuenciaB.push(item.opcion);
     });
-
+    console.log(arregloB);
     let repesca = myRand(arregloB, frecuenciaB);
+    console.log("ASIA", repesca);
     let nuevoRepesca = {
       id: 98,
       oficial: false,
@@ -259,10 +261,10 @@ export default function PageEquipos() {
     });
     let cupos = [];
     let pais = myRand(arreglo, frecuencia);
-    cupos.push({ id: 55, oficial: false, confederacion: "CONMEBOL", pais });
+    /*cupos.push({ id: 55, oficial: false, confederacion: "CONMEBOL", pais });
     arreglo = arreglo.filter((eq) => eq != pais);
     pais = myRand(arreglo, frecuencia);
-    cupos.push({ id: 55, oficial: false, confederacion: "CONMEBOL", pais });
+    cupos.push({ id: 55, oficial: false, confederacion: "CONMEBOL", pais }); */
     arreglo = arreglo.filter((eq) => eq != pais);
     pais = myRand(arreglo, frecuencia);
     let nuevo = {
@@ -360,7 +362,7 @@ export default function PageEquipos() {
           </Box>
 
           <Box textAlign="center">
-            <Button onClick={defineConmebol}>{conmebolLeyenda} (+ 2.5)</Button>
+            <Button onClick={defineConmebol}>{conmebolLeyenda} (+ 0.5)</Button>
           </Box>
 
           <Box textAlign="center">
@@ -369,7 +371,7 @@ export default function PageEquipos() {
             </Button>
           </Box>
           <Box textAlign="center">
-            <Button onClick={aleatoriosAsia}>{asiaLeyenda} (+ 2.5)</Button>
+            <Button onClick={aleatoriosAsia}>{asiaLeyenda} (+ 0.5)</Button>
           </Box>
 
           <Box textAlign="center">
@@ -481,8 +483,8 @@ export default function PageEquipos() {
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
-                  <strong>CONMEBOL</strong> Quedan dos cupos directos. Y un cupo
-                  a repechaje contra Asia.
+                  <strong>CONMEBOL</strong> Queda un cupo a repechaje contra
+                  Asia.
                 </Alert>
               </Grid>
               {suramerica.map((item, k) => (
@@ -543,9 +545,8 @@ export default function PageEquipos() {
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
-                  <strong>ASIA</strong> Los tres primeros pelean por dos cupos
-                  directos. El que no clasifique de los tres primeros se suma a
-                  los tres de abajo por un cupo a repechaje contra Conmebol.
+                  <strong>ASIA</strong> Estos cuatro equipos van por un cupo a
+                  repechaje contra Conmebol.
                 </Alert>
               </Grid>
               {asia.map((item, w) => (

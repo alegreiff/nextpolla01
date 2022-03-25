@@ -5,8 +5,22 @@
  * visible: true = siempre visible
  */
 export const menu = [
-  { id: 0, titulo: "Acceso", enlace: "/acceso", tipo: "home", auth: true },
-  { id: 100, titulo: "Inicio", enlace: "/", tipo: "home", auth: true },
+  {
+    id: 0,
+    titulo: "Acceso",
+    enlace: "/acceso",
+    tipo: "home",
+    auth: true,
+    visible: true,
+  },
+  {
+    id: 100,
+    titulo: "Inicio",
+    enlace: "/",
+    tipo: "home",
+    auth: true,
+    visible: true,
+  },
   {
     id: 101,
     titulo: "Calendario",

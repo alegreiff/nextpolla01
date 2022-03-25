@@ -1,7 +1,7 @@
 export const clasificados = [
   { id: 1, oficial: true, confederacion: "ASIA", pais: "Catar" },
-  { id: 2, oficial: true, confederacion: "ASIA", pais: "" },
-  { id: 3, oficial: true, confederacion: "ASIA", pais: "" },
+  { id: 2, oficial: true, confederacion: "ASIA", pais: "Arabia Saudita" },
+  { id: 3, oficial: true, confederacion: "ASIA", pais: "Japón" },
   { id: 4, oficial: true, confederacion: "ASIA", pais: "Irán" },
   { id: 5, oficial: true, confederacion: "ASIA", pais: "Corea del Sur" },
   { id: 6, oficial: true, confederacion: "ÁFRICA", pais: "" },
@@ -14,8 +14,8 @@ export const clasificados = [
   { id: 13, oficial: true, confederacion: "CONCACAF", pais: "" },
   { id: 14, oficial: true, confederacion: "CONMEBOL", pais: "Brasil" },
   { id: 15, oficial: true, confederacion: "CONMEBOL", pais: "Argentina" },
-  { id: 16, oficial: true, confederacion: "CONMEBOL", pais: "" },
-  { id: 17, oficial: true, confederacion: "CONMEBOL", pais: "" },
+  { id: 16, oficial: true, confederacion: "CONMEBOL", pais: "Ecuador" },
+  { id: 17, oficial: true, confederacion: "CONMEBOL", pais: "Uruguay" },
   { id: 18, oficial: true, confederacion: "UEFA", pais: "Alemania" },
   { id: 19, oficial: true, confederacion: "UEFA", pais: "Dinamarca" },
   { id: 20, oficial: true, confederacion: "UEFA", pais: "Francia" },
@@ -34,9 +34,9 @@ export const clasificados = [
 ];
 
 export const uefa = [
-  ["Escocia", "Ucrania", "Gales", "Austria"],
-  ["Rusia", "Polonia", "Suecia", "República Checa"],
-  ["Italia", "Macedonia del Norte", "Portugal", "Turquía"],
+  ["Escocia", "Ucrania", "Gales"],
+  ["Polonia", "Suecia"],
+  ["Macedonia del Norte", "Portugal"],
 ];
 
 export const africa = [
@@ -63,16 +63,16 @@ export const africa = [
 ];
 
 export const suramerica = [
-  { pais: "Ecuador", opcion: 80 },
-  { pais: "Uruguay", opcion: 60 },
+  //{ pais: "Ecuador", opcion: 80 },
+  //{ pais: "Uruguay", opcion: 60 },
   { pais: "Perú", opcion: 50 },
   { pais: "Chile", opcion: 30 },
   { pais: "Colombia", opcion: 20 },
-  { pais: "Bolivia", opcion: 10 },
+  //{ pais: "Bolivia", opcion: 10 },
 ];
 export const asia = [
-  { pais: "Arabia Saudita", opcion: 90 },
-  { pais: "Japón", opcion: 80 },
+  //{ pais: "Arabia Saudita", opcion: 90 },
+  //{ pais: "Japón", opcion: 80 },
   { pais: "Australia", opcion: 50 },
   { pais: "Emiratos Árabes", opcion: 10 },
   { pais: "Líbano", opcion: 10 },
