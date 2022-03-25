@@ -20,8 +20,12 @@ import { BotonEquipoClasificado } from "../../components/elementos/BotonEquipoCl
 export default function PageEquipos() {
   const [ceros, setCeros] = useState(false);
   const [uefaLeyenda, setUefaLeyenda] = useState("Definir Europa");
-  const [conmebolLeyenda, setConmebolLeyenda] = useState("Definir Conmebol");
-  const [asiaLeyenda, setAsiaLeyenda] = useState("Definir Asia");
+  const [conmebolLeyenda, setConmebolLeyenda] = useState(
+    "Definir cupo a repechaje Conmebol"
+  );
+  const [asiaLeyenda, setAsiaLeyenda] = useState(
+    "Definir cupo a repechaje Asia"
+  );
   const [concacafLeyenda, setConcacafLeyenda] = useState("Definir Concacaf");
   const [africaLeyenda, setAfricaLeyenda] = useState("Definir África");
   const [oceaniaLeyenda, setOceaniaLeyenda] = useState(
@@ -439,8 +443,8 @@ export default function PageEquipos() {
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
-                  <strong>UEFA</strong> Hay 6 llaves con cruces predefinidos.
-                  Clasifican 3 equipos.
+                  <strong>UEFA</strong> Quedan vivos siete equipos. Clasifican
+                  3.
                 </Alert>
               </Grid>
               {uefa.map((grupo, i) => (
