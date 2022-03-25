@@ -87,13 +87,13 @@ export const centroamerica = [
   { pais: "Costa Rica", opcion: 30 },
 ];
 export const oceania = [
-  { pais: "Vanuatu", opcion: 10 },
-  { pais: "Fiji", opcion: 10 },
+  //{ pais: "Vanuatu", opcion: 10 },
+  //{ pais: "Fiji", opcion: 10 },
   { pais: "Islas Salomón", opcion: 10 },
   { pais: "Nueva Zelanda", opcion: 80 },
   { pais: "Tahití", opcion: 20 },
-  { pais: "Nueva Caledonia", opcion: 5 },
-  { pais: "Islas Cook", opcion: 5 },
+  //{ pais: "Nueva Caledonia", opcion: 5 },
+  //{ pais: "Islas Cook", opcion: 5 },
 
   { pais: "Papúa Nueva Guinea", opcion: 10 },
 ];
