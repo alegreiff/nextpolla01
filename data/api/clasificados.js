@@ -9,7 +9,7 @@ export const clasificados = [
   { id: 8, oficial: true, confederacion: "ÁFRICA", pais: "" },
   { id: 9, oficial: true, confederacion: "ÁFRICA", pais: "" },
   { id: 10, oficial: true, confederacion: "ÁFRICA", pais: "" },
-  { id: 11, oficial: true, confederacion: "CONCACAF", pais: "" },
+  { id: 11, oficial: true, confederacion: "CONCACAF", pais: "Canadá" },
   { id: 12, oficial: true, confederacion: "CONCACAF", pais: "" },
   { id: 13, oficial: true, confederacion: "CONCACAF", pais: "" },
   { id: 14, oficial: true, confederacion: "CONMEBOL", pais: "Brasil" },
@@ -80,10 +80,10 @@ export const asia = [
 ];
 
 export const centroamerica = [
-  { pais: "Canadá", opcion: 80 },
+  //{ pais: "Canadá", opcion: 80 },
   { pais: "Estados Unidos", opcion: 60 },
   { pais: "México", opcion: 60 },
-  { pais: "Panamá", opcion: 40 },
+  //{ pais: "Panamá", opcion: 40 },
   { pais: "Costa Rica", opcion: 30 },
 ];
 export const oceania = [

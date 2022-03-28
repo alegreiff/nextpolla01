@@ -227,8 +227,8 @@ export default function PageEquipos() {
     cupos.push({ id: 54, oficial: false, confederacion: "CONCACAF", pais });
     arreglo = arreglo.filter((eq) => eq != pais);
 
-    pais = myRand(arreglo, frecuencia);
-    cupos.push({ id: 54, oficial: false, confederacion: "CONCACAF", pais });
+    //pais = myRand(arreglo, frecuencia);
+    //cupos.push({ id: 54, oficial: false, confederacion: "CONCACAF", pais });
 
     arreglo = arreglo.filter((eq) => eq != pais);
 
@@ -371,7 +371,7 @@ export default function PageEquipos() {
 
           <Box textAlign="center">
             <Button onClick={aleatoriosConcacaf}>
-              {concacafLeyenda} (+ 3.5)
+              {concacafLeyenda} (+ 2.5)
             </Button>
           </Box>
           <Box textAlign="center">
@@ -507,7 +507,7 @@ export default function PageEquipos() {
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
-                  <strong>CONCACAF</strong> Hay 3 cupos directos. Y un cupo a
+                  <strong>CONCACAF</strong> Quedan 2 cupos directos. Y un cupo a
                   repechaje contra Oceania.
                 </Alert>
               </Grid>
