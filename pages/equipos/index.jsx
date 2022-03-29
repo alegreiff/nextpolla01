@@ -358,7 +358,7 @@ export default function PageEquipos() {
           </Box>
 
           <Box textAlign="center">
-            <Button onClick={clasifUefa}>{uefaLeyenda} (+ 3)</Button>
+            <Button onClick={clasifUefa}>{uefaLeyenda} (+ 1)</Button>
           </Box>
 
           {/* <Box textAlign="center">
@@ -529,8 +529,8 @@ export default function PageEquipos() {
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
-                  <strong>OCEANÍA</strong> Pelean por un cupo a repechaje,
-                  deciden quien va al repechaje contra Concacaf.
+                  <strong>OCEANÍA</strong> Pelean por un cupo a repechaje contra
+                  Concacaf.
                 </Alert>
               </Grid>
               {oceania.map((item, k) => (
@@ -550,7 +550,7 @@ export default function PageEquipos() {
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
-                  <strong>ASIA</strong> Estos cuatro equipos van por un cupo a
+                  <strong>ASIA</strong> Estos dos equipos van por un cupo a
                   repechaje contra Conmebol.
                 </Alert>
               </Grid>
