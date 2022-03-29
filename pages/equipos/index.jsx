@@ -132,7 +132,7 @@ export default function PageEquipos() {
     //let asiaGrupoA = [asia[0], asia[1], asia[2]];
     let asiaGrupoA = [asia[0]];
 
-    let asiaGrupoB = [asia[1], asia[2], asia[3]];
+    let asiaGrupoB = [asia[1]];
 
     asiaGrupoA.forEach((item) => {
       arreglo.push(item.pais);
@@ -361,9 +361,9 @@ export default function PageEquipos() {
             <Button onClick={clasifUefa}>{uefaLeyenda} (+ 3)</Button>
           </Box>
 
-          <Box textAlign="center">
+          {/* <Box textAlign="center">
             <Button onClick={clasifAfrica}>{africaLeyenda} (+ 5)</Button>
-          </Box>
+          </Box> */}
 
           <Box textAlign="center">
             <Button onClick={defineConmebol}>{conmebolLeyenda} (+ 0.5)</Button>
@@ -443,27 +443,29 @@ export default function PageEquipos() {
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
-                  <strong>UEFA</strong> Quedan vivos siete equipos. Clasifican
-                  3.
+                  <strong>UEFA</strong> Quedan vivos tres equipos para un cupo.
                 </Alert>
               </Grid>
-              {uefa.map((grupo, i) => (
-                <Grid item key={i} xs={12} md={4}>
-                  <Box textAlign="center">Llave {i + 1}</Box>
-                  {grupo.map((item, j) => (
-                    <Box key={j} textAlign="center">
-                      <Chip
-                        className={estilos.chip}
-                        label={item}
-                        variant="outlined"
-                      />
-                    </Box>
-                  ))}
-                </Grid>
-              ))}
+              {uefa.map(
+                (grupo, i) =>
+                  i === 0 && (
+                    <Grid item key={i} xs={12} md={4}>
+                      <Box textAlign="center">Llave {i + 1}</Box>
+                      {grupo.map((item, j) => (
+                        <Box key={j} textAlign="center">
+                          <Chip
+                            className={estilos.chip}
+                            label={item}
+                            variant="outlined"
+                          />
+                        </Box>
+                      ))}
+                    </Grid>
+                  )
+              )}
             </Grid>
 
-            <Grid container mt={4} className={estilos.bordered}>
+            {/* <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
                   <strong>CAF</strong> Hay cinco llaves con eliminación directa.
@@ -482,7 +484,7 @@ export default function PageEquipos() {
                   </Box>
                 </Grid>
               ))}
-            </Grid>
+            </Grid> */}
 
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
@@ -527,9 +529,8 @@ export default function PageEquipos() {
             <Grid container mt={4} className={estilos.bordered}>
               <Grid item xs={12}>
                 <Alert severity="info">
-                  <strong>OCEANÍA</strong> Pelean por un cupo a repechaje. Están
-                  divididos en dos grupos y los ganadores deciden quien va al
-                  repechaje contra Concacaf.
+                  <strong>OCEANÍA</strong> Pelean por un cupo a repechaje,
+                  deciden quien va al repechaje contra Concacaf.
                 </Alert>
               </Grid>
               {oceania.map((item, k) => (
